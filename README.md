@@ -1,34 +1,34 @@
-# ⚡ AI Career Suggestion System
+# AI Career Suggestion System
 
 A full-stack web application built with **Flask** that recommends career paths based on your technical skills or uploaded resume. The system analyzes your skills, matches them with a predefined dataset, and suggests the most relevant career fields and job roles with a confidence score.
 
 ---
 
-## 🖥️ Demo Screenshots
+## Demo Screenshots
 
-### 🏠 Home Page
+### Home Page
 ![Home Page](static/images/Home-1.png)
 
 ![Home Features](static/images/Home-2.png)
 
-### 📝 Career Analysis Form
+### Career Analysis Form
 ![Form Page](static/images/analyse.png)
 
-### ✅ Form Validation
+### Form Validation
 ![Form Validation](static/images/validation.png)
 
-### 🎯 Results — Top 3 Career Suggestions
+### Results — Top 3 Career Suggestions
 ![Result Page](static/images/predict-1.png)
 
-### 📋 Results — All Matching Careers
+### Results — All Matching Careers
 ![All Careers](static/images/predict-2.png)
 
-### 📁 Analysis History
+### Analysis History
 ![History Page](static/images/history.png)
 
 ---
 
-## 🚀 Features
+## Features
 
 - ✅ Enter skills manually (comma-separated)
 - ✅ Upload `.docx` resume for automatic skill detection
@@ -45,7 +45,7 @@ A full-stack web application built with **Flask** that recommends career paths b
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 | Layer      | Technology                                    |
 |------------|-----------------------------------------------|
@@ -57,7 +57,7 @@ A full-stack web application built with **Flask** that recommends career paths b
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 AI-Career-Suggestion/
@@ -81,11 +81,11 @@ AI-Career-Suggestion/
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/AI-Career-Suggestion.git
+git clone https://github.com/TripuraMetta/AI-Career-Suggestion-System.git
 cd AI-Career-Suggestion
 ```
 
@@ -108,7 +108,7 @@ http://localhost:5000
 
 ---
 
-## 🔄 Project Workflow
+## Project Workflow
 
 ```
 User Opens Home Page
@@ -134,7 +134,7 @@ User Opens Home Page
 
 ---
 
-## 🧠 How the Algorithm Works
+## How the Algorithm Works
 
 1. User inputs skills (comma-separated) OR uploads a `.docx` resume
 2. If resume: text is extracted and skills are detected by matching against `dataset.json`
@@ -146,7 +146,7 @@ User Opens Home Page
 
 ---
 
-## 🗃️ Database Schema
+## Database Schema
 
 **Table: `results`**
 
@@ -164,17 +164,16 @@ User Opens Home Page
 
 ---
 
-## 🔮 Future Scope
+## Future Scope
 
-- 📄 PDF resume support
-- 👤 Login / user accounts system
-- 📊 Charts and graphs using Chart.js
-- 🤖 ML model (scikit-learn) for smarter predictions
-- ☁️ Deploy on Render / Railway / PythonAnywhere
-- 🌐 Expand dataset with more skills and career fields
+- PDF resume support
+- Login / user accounts system
+- Charts and graphs using Chart.js
+- ML model (scikit-learn) for smarter predictions
+- Deploy on Render / Railway / PythonAnywhere
+- Expand dataset with more skills and career fields
 
 ---
 
-## 👩‍💻 Author
-
-Built as a full-stack mini project using Flask, Bootstrap, jQuery, and SQLite.
+Deployed Link:
+https://ai-career-suggestion-system.onrender.com
