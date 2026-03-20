@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History — CareerAI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">⚡ <span>CareerAI</span></a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/form">Analyze</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/history">History</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header fade-in">
+  <div class="container">
+    <h2>Analysis History</h2>
+    <p>All previous career analyses stored in your local database.</p>
+  </div>
+</div>
+
+<div class="container pb-5 fade-in">
+
+  {% if records %}
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div style="color:var(--muted); font-size:.9rem;">
+      {{ records | length }} record{{ 's' if records | length != 1 }}
+    </div>
+    <form method="POST" action="/clear_history">
+      <button type="submit" id="clear-history-btn" class="btn-outline-custom" style="color:var(--danger); border-color:rgba(239,68,68,0.3); font-size:.85rem; padding:8px 18px;">
+        🗑 Clear All
+      </button>
+    </form>
+  </div>
+
+  <!-- Desktop table -->
+  <div class="d-none d-md-block">
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Career Field</th>
+          <th>Best Role</th>
+          <th>Confidence</th>
+          <th>Top 3 Roles</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in records %}
+        <tr>
+          <td style="color:var(--muted); font-size:.85rem;">{{ r.id }}</td>
+          <td style="font-weight:600;">{{ r.name }}</td>
+          <td>
+            <span style="background:rgba(0,212,255,0.08); color:var(--accent); border:1px solid rgba(0,212,255,0.15); padding:3px 10px; border-radius:100px; font-size:.78rem; font-weight:700;">
+              {{ r.field }}
+            </span>
+          </td>
+          <td style="font-weight:600;">{{ r.best_career }}</td>
+          <td>
+            <span class="confidence-pill">{{ r.confidence }}%</span>
+          </td>
+          <td style="font-size:.82rem; color:var(--muted);">
+            {% for item in r.top3 %}
+              {{ item.roles[0] }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          </td>
+          <td style="font-size:.8rem; color:var(--muted);">{{ r.timestamp }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile cards -->
+  <div class="d-md-none">
+    {% for r in records %}
+    <div class="card-dark mb-3 no-hover">
+      <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:12px;">
+        <div>
+          <div style="font-weight:700; font-size:1.05rem;">{{ r.name }}</div>
+          <div style="font-size:.75rem; color:var(--muted);">{{ r.timestamp }}</div>
+        </div>
+        <span class="confidence-pill">{{ r.confidence }}%</span>
+      </div>
+      <div style="margin-bottom:8px;">
+        <span style="background:rgba(0,212,255,0.08); color:var(--accent); border:1px solid rgba(0,212,255,0.15); padding:3px 12px; border-radius:100px; font-size:.75rem; font-weight:700;">
+          {{ r.field }}
+        </span>
+      </div>
+      <div style="font-weight:600; margin-bottom:4px;">{{ r.best_career }}</div>
+      <div style="font-size:.8rem; color:var(--muted);">
+        {% for item in r.top3 %}{{ item.roles[0] }}{% if not loop.last %} · {% endif %}{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+
+  <div class="empty-state fade-in">
+    <div class="icon">📭</div>
+    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:10px;">No history yet</h3>
+    <p style="color:var(--muted); margin-bottom:28px;">Run your first career analysis to see results here.</p>
+    <a href="/form" class="btn-primary-custom">Start Analysis →</a>
+  </div>
+
+  {% endif %}
+
+</div>
+
+<footer>
+  <div class="container">⚡ CareerAI &mdash; AI Career Suggestion System</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</body>
+</html>

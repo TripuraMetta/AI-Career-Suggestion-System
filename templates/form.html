@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyze Skills — CareerAI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">⚡ <span>CareerAI</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span style="color:var(--text)">☰</span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/form">Analyze</a></li>
+        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header fade-in">
+  <div class="container">
+    <h2>Career Analysis</h2>
+    <p>Enter your skills manually or upload your resume to get personalized career suggestions.</p>
+  </div>
+</div>
+
+<div class="container pb-5" style="max-width:640px;">
+
+  {% if error %}
+  <div class="error-box fade-in">
+    <span>⚠</span> {{ error }}
+  </div>
+  {% endif %}
+
+  <div class="card-dark no-hover fade-in">
+    <form id="career-form" method="POST" action="/predict" enctype="multipart/form-data" novalidate>
+
+      <!-- Name -->
+      <div class="mb-4">
+        <label class="form-label-custom">Your Name</label>
+        <input
+          type="text"
+          id="name-input"
+          name="name"
+          class="form-control-custom"
+          placeholder="e.g. Rahul Sharma"
+          value="{{ request.form.get('name', '') }}"
+          autocomplete="off"
+        />
+        <div class="error-box mt-2" id="name-error" style="display:none;"></div>
+      </div>
+
+      <!-- Tab Toggle -->
+      <div class="tab-toggle mb-0">
+        <button type="button" class="tab-btn active" id="tab-manual" onclick="switchTab('manual')">
+          ✍️ &nbsp;Enter Skills Manually
+        </button>
+        <button type="button" class="tab-btn" id="tab-resume" onclick="switchTab('resume')">
+          📄 &nbsp;Upload Resume (.docx)
+        </button>
+      </div>
+
+      <!-- Manual Skills Section -->
+      <div id="manual-section" class="mt-4">
+        <label class="form-label-custom">Technical Skills</label>
+        <textarea
+          id="skills-input"
+          name="skills"
+          class="form-control-custom"
+          placeholder="e.g. Python, Machine Learning, TensorFlow, SQL, React..."
+          rows="4"
+        >{{ request.form.get('skills', '') }}</textarea>
+        <p style="font-size:.8rem; color:var(--muted); margin-top:6px;">Separate each skill with a comma.</p>
+        <div id="skill-preview" style="margin-top:10px;"></div>
+        <div class="error-box mt-2" id="skills-error" style="display:none;"></div>
+      </div>
+
+      <!-- Resume Upload Section -->
+      <div id="resume-section" class="mt-4" style="display:none;">
+        <label class="form-label-custom">Upload Resume</label>
+        <div class="upload-zone" id="upload-zone">
+          <div class="upload-icon">📤</div>
+          <div class="upload-text">
+            <strong>Click to browse</strong> or drag & drop your resume here
+          </div>
+          <div style="font-size:.78rem; color:var(--muted); margin-top:6px;">Supported format: .docx only</div>
+          <div id="file-chosen"></div>
+        </div>
+        <input type="file" id="resume-file" name="resume" accept=".docx" style="display:none;" />
+        <div class="error-box mt-2" id="resume-error" style="display:none;"></div>
+      </div>
+
+      <!-- Submit -->
+      <div class="mt-5">
+        <button type="submit" id="submit-btn" class="btn-primary-custom w-100" style="justify-content:center;">
+          <div class="spinner" id="submit-spinner"></div>
+          <span id="submit-text">Analyze My Career Path →</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Tips -->
+  <div class="card-dark no-hover mt-4 fade-in fade-in-2">
+    <div style="font-size:.85rem; font-weight:700; margin-bottom:12px; color:var(--accent);">💡 Tips for better results</div>
+    <ul style="font-size:.85rem; color:var(--muted); margin:0; padding-left:18px; line-height:2;">
+      <li>Include both tools and concepts (e.g. "Docker, AWS, Kubernetes")</li>
+      <li>Add programming languages you know (Python, Java, C++)</li>
+      <li>Mention frameworks (React, Django, Flutter, TensorFlow)</li>
+      <li>Include domain knowledge (Machine Learning, Cybersecurity, UI Design)</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">⚡ CareerAI &mdash; AI Career Suggestion System</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Career Suggestion System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">⚡ <span>CareerAI</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span style="color:var(--text)">☰</span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/form">Analyze</a></li>
+        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-6 fade-in">
+        <div class="hero-badge"><span class="dot"></span> AI-Powered Career Intelligence</div>
+        <h1 class="hero-title">
+          Discover Your <span class="accent">Ideal</span><br>
+          Career <span class="accent2">Path</span>
+        </h1>
+        <p class="hero-sub">
+          Enter your technical skills or upload your resume — our intelligent matching engine instantly maps you to the most relevant career fields and roles.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="/form" class="btn-primary-custom">
+            Start Analysis <span>→</span>
+          </a>
+          <a href="/history" class="btn-outline-custom">
+            View History
+          </a>
+        </div>
+        <div class="hero-stats fade-in fade-in-2">
+          <div class="stat">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Career Fields</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">80+</div>
+            <div class="stat-label">Job Roles</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">150+</div>
+            <div class="stat-label">Skills Tracked</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-flex justify-content-center fade-in fade-in-2">
+        <!-- Decorative card stack -->
+        <div style="position:relative; width:380px; height:420px;">
+          <div style="position:absolute; top:40px; left:20px; width:340px; background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px; transform:rotate(-3deg);">
+            <div style="font-size:.7rem; color:var(--accent); font-weight:700; letter-spacing:.1em; text-transform:uppercase;">Career Match</div>
+            <div style="font-size:1.4rem; font-weight:800; margin:8px 0;">Data Scientist</div>
+            <div style="height:6px; background:var(--border); border-radius:10px; margin:12px 0;"><div style="height:6px; width:87%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:10px;"></div></div>
+            <div style="font-size:.8rem; color:var(--muted);">87% Confidence Score</div>
+          </div>
+          <div style="position:absolute; top:140px; left:40px; width:340px; background:var(--card); border:1px solid rgba(0,212,255,0.3); border-radius:18px; padding:28px; box-shadow:var(--shadow);">
+            <div style="font-size:.7rem; color:var(--accent2); font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;">Skills Detected</div>
+            <div>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">NLP</span>
+            </div>
+          </div>
+          <div style="position:absolute; top:300px; left:20px; width:340px; background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:20px 28px; transform:rotate(2deg);">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-size:1.5rem;">🎯</span>
+              <div>
+                <div style="font-size:.75rem; color:var(--muted);">Top Suggestion</div>
+                <div style="font-weight:700;">AI / Data Science Field</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <h2 style="font-size:2rem; font-weight:800;">How It Works</h2>
+      <p style="color:var(--muted); margin-top:8px;">Four simple steps to your career clarity</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 fade-in">
+        <div class="card-dark h-100">
+          <div class="feature-icon fi-blue">🧠</div>
+          <div class="feature-title">Input Skills</div>
+          <div class="feature-desc">Type your technical skills or upload your .docx resume for automatic detection.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-in fade-in-2">
+        <div class="card-dark h-100">
+          <div class="feature-icon fi-purple">⚙️</div>
+          <div class="feature-title">AI Matching</div>
+          <div class="feature-desc">Our algorithm scores your skills against 10+ career fields with 150+ skill mappings.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-in fade-in-3">
+        <div class="card-dark h-100">
+          <div class="feature-icon fi-green">📊</div>
+          <div class="feature-title">Get Results</div>
+          <div class="feature-desc">View your top career field, best match role, confidence score and Top 3 suggestions.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-in fade-in-4">
+        <div class="card-dark h-100">
+          <div class="feature-icon fi-amber">📁</div>
+          <div class="feature-title">Track History</div>
+          <div class="feature-desc">All results are stored in SQLite — revisit and compare past analyses anytime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5">
+  <div class="container">
+    <div style="background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(124,58,237,0.08)); border:1px solid var(--border); border-radius:20px; padding:60px 40px; text-align:center;">
+      <h2 style="font-size:2rem; font-weight:800; margin-bottom:14px;">Ready to find your path?</h2>
+      <p style="color:var(--muted); margin-bottom:32px;">It takes less than 30 seconds. No sign-up required.</p>
+      <a href="/form" class="btn-primary-custom" style="font-size:1.1rem; padding:16px 44px;">
+        Start Now →
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    ⚡ CareerAI &mdash; AI Career Suggestion System &nbsp;|&nbsp; Built with Flask + Python
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>

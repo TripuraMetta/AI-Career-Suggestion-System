@@ -1,0 +1,54 @@
+{
+  "careers": [
+    {
+      "field": "AI / Data Science",
+      "skills": ["python", "machine learning", "deep learning", "tensorflow", "keras", "pytorch", "scikit-learn", "numpy", "pandas", "data analysis", "statistics", "r", "nlp", "computer vision", "data visualization", "matplotlib", "seaborn", "jupyter", "ai", "neural networks"],
+      "roles": ["AI Engineer", "Data Scientist", "Machine Learning Engineer", "Deep Learning Engineer", "NLP Engineer", "Computer Vision Engineer", "Research Scientist", "Data Analyst"]
+    },
+    {
+      "field": "Web Development",
+      "skills": ["html", "css", "javascript", "react", "angular", "vue", "nodejs", "express", "bootstrap", "jquery", "typescript", "sass", "webpack", "rest api", "graphql", "php", "laravel", "django", "flask", "web design"],
+      "roles": ["Frontend Developer", "Backend Developer", "Full Stack Developer", "Web Designer", "UI Developer", "React Developer", "Node.js Developer", "PHP Developer"]
+    },
+    {
+      "field": "Mobile Development",
+      "skills": ["android", "ios", "flutter", "react native", "kotlin", "swift", "java", "dart", "mobile ui", "firebase", "xcode", "android studio", "mobile development", "app development"],
+      "roles": ["Android Developer", "iOS Developer", "Flutter Developer", "React Native Developer", "Mobile App Developer", "Cross-Platform Developer"]
+    },
+    {
+      "field": "Cloud & DevOps",
+      "skills": ["aws", "azure", "gcp", "docker", "kubernetes", "jenkins", "ci/cd", "terraform", "ansible", "linux", "bash", "shell scripting", "devops", "cloud computing", "microservices", "git", "github actions", "cloudformation"],
+      "roles": ["DevOps Engineer", "Cloud Architect", "SRE Engineer", "Infrastructure Engineer", "Platform Engineer", "Cloud Engineer", "Kubernetes Administrator"]
+    },
+    {
+      "field": "Cybersecurity",
+      "skills": ["cybersecurity", "ethical hacking", "penetration testing", "network security", "cryptography", "firewalls", "siem", "vulnerability assessment", "kali linux", "wireshark", "metasploit", "owasp", "security auditing", "incident response", "soc"],
+      "roles": ["Cybersecurity Analyst", "Ethical Hacker", "Penetration Tester", "Security Engineer", "SOC Analyst", "Network Security Engineer", "Incident Responder"]
+    },
+    {
+      "field": "Database Administration",
+      "skills": ["sql", "mysql", "postgresql", "mongodb", "oracle", "sqlite", "redis", "cassandra", "database design", "query optimization", "nosql", "data modeling", "database administration", "pl/sql", "stored procedures"],
+      "roles": ["Database Administrator", "Data Engineer", "SQL Developer", "Database Architect", "NoSQL Specialist", "Data Warehouse Engineer"]
+    },
+    {
+      "field": "Game Development",
+      "skills": ["unity", "unreal engine", "c#", "c++", "game design", "3d modeling", "blender", "opengl", "game physics", "animation", "game development", "godot", "level design", "shader programming"],
+      "roles": ["Game Developer", "Unity Developer", "Unreal Engine Developer", "Game Designer", "3D Artist", "Game Programmer", "Technical Artist"]
+    },
+    {
+      "field": "Blockchain & Web3",
+      "skills": ["blockchain", "solidity", "ethereum", "smart contracts", "web3", "nft", "defi", "cryptocurrency", "hyperledger", "truffle", "hardhat", "metamask", "decentralized apps", "dapps"],
+      "roles": ["Blockchain Developer", "Smart Contract Developer", "Web3 Developer", "DeFi Developer", "Crypto Analyst", "Solidity Engineer"]
+    },
+    {
+      "field": "UI/UX Design",
+      "skills": ["ui design", "ux design", "figma", "adobe xd", "sketch", "wireframing", "prototyping", "user research", "design thinking", "photoshop", "illustrator", "typography", "color theory", "accessibility", "usability testing"],
+      "roles": ["UI Designer", "UX Designer", "Product Designer", "UX Researcher", "Interaction Designer", "Visual Designer", "UX Strategist"]
+    },
+    {
+      "field": "Embedded & IoT",
+      "skills": ["embedded systems", "iot", "arduino", "raspberry pi", "c", "c++", "rtos", "microcontrollers", "firmware", "hardware", "sensors", "mqtt", "zigbee", "bluetooth", "plc", "vhdl", "fpga"],
+      "roles": ["Embedded Systems Engineer", "IoT Developer", "Firmware Engineer", "Hardware Engineer", "Robotics Engineer", "Systems Programmer"]
+    }
+  ]
+}

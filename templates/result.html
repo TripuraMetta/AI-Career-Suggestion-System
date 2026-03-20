@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results — CareerAI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">⚡ <span>CareerAI</span></a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/form">Analyze</a></li>
+        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5" style="max-width:900px;">
+
+  <!-- Hero Result Card -->
+  <div class="result-hero fade-in">
+    <p style="color:var(--muted); font-size:.9rem; margin-bottom:12px;">
+      Results for <strong style="color:var(--text);">{{ name }}</strong>
+      &nbsp;·&nbsp;
+      {% if source == 'resume' %}
+        <span style="color:var(--accent3);">📄 Resume Analysis</span>
+      {% else %}
+        <span style="color:var(--accent);">✍️ Manual Skills</span>
+      {% endif %}
+    </p>
+    <div class="result-field-badge">{{ result.field }}</div>
+    <div class="result-role">{{ result.best_career }}</div>
+    <p style="color:var(--muted); font-size:.9rem;">Best matching role for your skill set</p>
+    <div class="confidence-bar-wrap">
+      <div class="confidence-label">
+        <span>Confidence Score</span>
+        <span style="color:var(--accent); font-weight:700;">{{ result.confidence }}%</span>
+      </div>
+      <div class="confidence-bar">
+        <div class="confidence-fill" data-width="{{ result.confidence }}" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top 3 -->
+  <h3 class="section-title fade-in">🏆 Top 3 Suggestions</h3>
+  <div class="row g-3 mb-5 fade-in fade-in-2">
+    {% for item in result.top3 %}
+    <div class="col-md-4">
+      <div class="top3-card h-100">
+        <div class="top3-rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% else %}bronze{% endif %}">
+          #{{ loop.index }}
+        </div>
+        <div class="top3-field">{{ item.field }}</div>
+        <div class="top3-role">{{ item.roles[0] }}</div>
+        <span class="confidence-pill">{{ item.confidence }}% match</span>
+        <div style="margin-top:10px; font-size:.8rem; color:var(--muted);">
+          {{ item.score }} skill{{ 's' if item.score != 1 }} matched
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Detected Skills -->
+  <h3 class="section-title fade-in">🎯 Your Skills</h3>
+  <div class="card-dark no-hover mb-5 fade-in fade-in-2">
+    <div style="margin-bottom:10px; font-size:.85rem; color:var(--muted);">
+      {{ skills | length }} skill{{ 's' if skills | length != 1 }} detected
+      {% if result.matched_skills %}
+        &nbsp;·&nbsp; <span style="color:var(--accent3);">{{ result.matched_skills | length }} matched to top field</span>
+      {% endif %}
+    </div>
+    <div>
+      {% for skill in skills %}
+        <span class="skill-tag {% if skill.lower() in result.matched_skills %}matched{% endif %}"
+              style="{% if skill.lower() in result.matched_skills %}background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);color:#6ee7b7;{% endif %}">
+          {{ skill }}
+        </span>
+      {% endfor %}
+    </div>
+    {% if result.matched_skills %}
+    <p style="font-size:.78rem; color:var(--muted); margin-top:12px;">
+      <span style="color:#6ee7b7;">Green</span> = matched to your top career field
+    </p>
+    {% endif %}
+  </div>
+
+  <!-- All Careers -->
+  <h3 class="section-title fade-in">📋 All Matching Careers</h3>
+  <div class="all-careers-row fade-in fade-in-2 mb-5">
+    {% for item in result.all_careers %}
+    <div class="career-mini-card">
+      <div class="career-mini-field">{{ item.field }}</div>
+      <div class="career-mini-role">{{ item.roles[0] }}</div>
+      <div class="career-mini-score">{{ item.score }} skills · {{ item.confidence }}% match</div>
+      <div style="margin-top:8px;">
+        {% for role in item.roles[1:4] %}
+          <span style="font-size:.75rem; color:var(--muted); display:inline-block; margin-right:6px; margin-top:2px;">{{ role }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Actions -->
+  <div class="d-flex gap-3 flex-wrap fade-in">
+    <a href="/form" class="btn-primary-custom">← Analyze Again</a>
+    <a href="/history" class="btn-outline-custom">View History</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">⚡ CareerAI &mdash; AI Career Suggestion System</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</body>
+</html>
